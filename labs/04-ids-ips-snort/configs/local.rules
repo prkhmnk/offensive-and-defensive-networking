@@ -1,0 +1,12 @@
+# Custom local rules — Snort on pfSense-2 (LAN interface).
+# NOTE: destination uses the LITERAL victim IP, not $HOME_NET, because
+# $HOME_NET on pfSense-2 does not include the remote Network C (192.168.120.0/24).
+# Replace with your exact submitted rule as needed.
+
+# SSH brute force: >5 SYN attempts to the victim's SSH port in 30 seconds.
+alert tcp 172.16.120.11 any -> 192.168.120.10 22 ( \
+    msg:"LOCAL SSH brute force from Kali to Windows victim"; \
+    flags:S; \
+    detection_filter:track by_src, count 5, seconds 30; \
+    sid:1000020; rev:1; \
+)

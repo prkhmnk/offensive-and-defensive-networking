@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.pkt     binary
+*.pcap    binary
+*.pcapng  binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.pdf     binary
+*.docx    binary

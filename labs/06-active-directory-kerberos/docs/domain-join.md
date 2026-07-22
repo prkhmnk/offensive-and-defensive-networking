@@ -12,7 +12,7 @@ The Windows 11 virtual machine was connected to the internal laboratory network 
 
 ![VMware LAN Segment](../evidence/screenshots/domain-join/vmware-network.png)
 
-The client was configured to obtain its IPv4 address automatically from the pfSense DHCP server. The preferred DNS server was manually configured to use the Active Directory Domain Controller (**192.168.120.3**), while an alternate DNS server (**8.8.8.8**) was configured for external name resolution.
+The client was configured to obtain its IPv4 address automatically from the pfSense DHCP server. The preferred DNS server was manually configured to use the Active Directory Domain Controller (**192.168.120.3**), while the alternate DNS server (**8.8.8.8**) was configured according to the laboratory requirements.
 
 **Figure 26.** Windows 11 IPv4 configuration using DHCP and the Domain Controller as the preferred DNS server.
 

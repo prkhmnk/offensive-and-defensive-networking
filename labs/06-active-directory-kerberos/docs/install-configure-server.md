@@ -248,3 +248,133 @@ The successful creation of the reverse lookup zone confirms that reverse DNS nam
 **Figure 22.** Reverse Lookup Zone configured for the 192.168.120.0/24 network.
 
 ![Reverse Lookup Zone](../evidence/screenshots/install-configure-server/dns-reverse-zone.png)
+
+
+## Verify Active Directory Configuration Using PowerShell
+
+The following PowerShell cmdlets and Windows commands were used to verify the Domain Controller configuration, Active Directory services, domain settings, user security context, and DNS name resolution.
+
+### Verify the Primary Domain Controller
+
+The following command was used to verify the Primary Domain Controller (PDC) for the Active Directory domain.
+
+```powershell
+netdom query pdc
+```
+
+The output confirmed that **WIN-HSDL1A303DJ** is the Primary Domain Controller (PDC Emulator) for the **parkhomenko.test** domain.
+
+**Figure 23.** Verification of the Primary Domain Controller using `netdom query pdc`.
+
+![Primary Domain Controller](../evidence/screenshots/install-configure-server/netdom-query-pdc.png)
+
+### Verify Active Directory Services
+
+The following PowerShell cmdlet was used to verify that the required Active Directory services were running.
+
+```powershell
+Get-Service adws,kdc,netlogon,dns
+```
+
+The output confirmed that all required services were running successfully.
+
+| Service | Purpose |
+|---------|----------|
+| ADWS | Active Directory Web Services |
+| DNS | Domain Name System |
+| KDC | Kerberos Key Distribution Center |
+| Netlogon | Domain authentication and secure channel |
+
+These services are required for Active Directory, Kerberos authentication, and DNS name resolution.
+
+**Figure 24.** Active Directory services running on the Domain Controller.
+
+![Running Services](../evidence/screenshots/install-configure-server/get-service.png)
+
+### Verify Domain Controller Configuration
+
+The following PowerShell cmdlet was used to display the Domain Controller configuration.
+
+```powershell
+Get-ADDomainController
+```
+
+The output was reviewed to verify the Domain Controller settings required for Kerberos authentication, including:
+
+- **Computer Name (CN):** WIN-HSDL1A303DJ
+- **Organizational Unit (OU):** Domain Controllers
+- **Domain Components (DC):** parkhomenko.test
+- **IPv4 Address:** 192.168.120.3
+- **LDAP Port:** 389
+- **SSL Port:** 636
+- **Global Catalog:** True
+
+These settings confirm that the Domain Controller is correctly configured to provide Active Directory and Kerberos services.
+
+**Figure 25.** Domain Controller configuration displayed using `Get-ADDomainController`.
+
+![Domain Controller Configuration](../evidence/screenshots/install-configure-server/get-addomaincontroller.png)
+
+### Verify Domain Configuration
+
+The following command was used to display the Active Directory domain configuration.
+
+```powershell
+Get-ADDomain parkhomenko.test
+```
+
+The output confirmed the Active Directory domain configuration, including:
+
+- DNS Root: **parkhomenko.test**
+- Distinguished Name (DN)
+- Domain SID
+- Domain Controllers container
+- Computers container
+- Users container
+- PDC Emulator
+- RID Master
+- Infrastructure Master
+
+The output verified that all FSMO roles were assigned correctly and the Active Directory domain was configured successfully.
+
+**Figure 26.** Active Directory domain configuration displayed using `Get-ADDomain`.
+
+![Domain Configuration](../evidence/screenshots/install-configure-server/get-addomain.png)
+
+### Verify User Security Context
+
+The following command was used to verify the current user security context.
+
+```cmd
+whoami /all
+```
+
+The output displayed:
+
+- Current user account
+- User SID
+- Group memberships
+- Administrator groups
+- Enabled and disabled security privileges
+
+The current session was running under the Domain Administrator account with the expected administrative permissions.
+
+**Figure 27.** User security information displayed using `whoami /all`.
+
+![User Security Context](../evidence/screenshots/install-configure-server/whoami-all.png)
+
+### Verify DNS Name Resolution
+
+The following command was used to verify DNS name resolution.
+
+```cmd
+nslookup
+```
+
+The command successfully resolved the **parkhomenko.test** domain name to **192.168.120.3**, confirming that the Active Directory DNS service was functioning correctly.
+
+Although the default DNS server was displayed as **Unknown (::1)**, the domain name was resolved successfully, verifying that DNS resolution was working properly.
+
+**Figure 28.** DNS name resolution verified using `nslookup`.
+
+![DNS Name Resolution](../evidence/screenshots/install-configure-server/nslookup.png)

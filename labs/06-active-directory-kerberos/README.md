@@ -2,19 +2,16 @@
 
 > **Windows Server 2025** • **Active Directory Domain Services (AD DS)** • **DNS** • **Kerberos** • **LDAP** • **IIS** • **Wireshark**
 
----
 
 ## Lab Overview
 
 This laboratory demonstrates the deployment of a complete Microsoft Active Directory environment using Windows Server 2025. The project includes the installation and configuration of Active Directory Domain Services (AD DS), DNS, domain administration, Windows client integration, Kerberos authentication, IIS integration, and packet-level analysis of the Kerberos protocol using Wireshark.
 
----
 
 ## Objective
 
 The objective of this laboratory is to deploy a Windows Server 2025 Active Directory environment, join a Windows client to the domain, verify Kerberos authentication, and configure Kerberos-based authentication for an IIS web service.
 
----
 
 ## Network Topology
 
@@ -23,7 +20,6 @@ The laboratory environment consists of a Windows Server 2025 Domain Controller, 
 ![Network Topology](diagrams/network-topology.png)
 
 
----
 
 ## Introduction
 
@@ -46,7 +42,6 @@ In addition to directory services, Active Directory provides:
 - certificate services (AD CS);
 - integration with Kerberos authentication.
 
----
 
 ## Domain Controller
 
@@ -62,7 +57,6 @@ Its primary responsibilities include:
 
 Without a Domain Controller, Active Directory cannot function as a centralized identity management system.
 
----
 
 ## Kerberos Authentication
 
@@ -84,7 +78,6 @@ The KDC consists of two logical services:
 
 This ticket-based authentication mechanism improves security by eliminating the need to transmit user passwords across the network.
 
----
 
 ## Security Perspective
 
@@ -98,7 +91,6 @@ Knowledge gained in this laboratory provides the foundation for understanding at
 - Silver Ticket
 - Overpass-the-Hash
 
----
 
 ## Technologies
 
@@ -110,7 +102,6 @@ Knowledge gained in this laboratory provides the foundation for understanding at
 - IIS
 - Wireshark
 
----
 
 ## Skills Demonstrated
 
@@ -124,7 +115,6 @@ Knowledge gained in this laboratory provides the foundation for understanding at
 - IIS Windows Authentication
 - Network packet analysis using Wireshark
 
----
 
 ## Repository Structure
 
@@ -142,7 +132,6 @@ Knowledge gained in this laboratory provides the foundation for understanding at
 └── evidence/
 ```
 
----
 
 ## Laboratory Parts
 
@@ -153,7 +142,6 @@ Knowledge gained in this laboratory provides the foundation for understanding at
 | **Part III** | [Analyze Kerberos User Authentication](docs/kerberos-authentication.md) |
 | **Part IV** | [Configure IIS Integrated Windows Authentication Using Kerberos](docs/iis-kerberos.md) |
 
----
 
 ## References
 

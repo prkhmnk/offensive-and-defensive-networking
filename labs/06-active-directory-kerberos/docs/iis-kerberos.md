@@ -10,17 +10,21 @@ The **Web Server (IIS)** role was installed using **Server Manager → Add Roles
 
 During installation, the **Windows Authentication** role service was selected.
 
-> Figure XX. Windows Authentication role service selected during IIS installation.  
-> `../evidence/screenshots/iis-kerberos/iis-role-services-windows-authentication.png`  
+> Figure 54. Windows Authentication role service selected during IIS installation.
 
-> Figure XX. IIS installation completed successfully.  
-> `../evidence/screenshots/iis-kerberos/iis-installation-completed.png`  
+![Windows Authentication role service selected during IIS installation](../evidence/screenshots/iis-kerberos/iis-role-services-windows-authentication.png)
 
-> Figure XX. IIS Manager showing the Default Web Site after installation.  
-> `../evidence/screenshots/iis-kerberos/iis-manager-default-site.png`  
+> Figure 55. IIS installation completed successfully.
 
-> Figure XX. Default IIS website successfully loaded before Windows Authentication was configured.  
-> `../evidence/screenshots/iis-kerberos/iis-default-web-page.png`  
+![IIS installation completed successfully](../evidence/screenshots/iis-kerberos/iis-installation-completed.png)
+
+> Figure 56. IIS Manager showing the Default Web Site after installation.
+
+![IIS Manager showing the Default Web Site after installation](../evidence/screenshots/iis-kerberos/iis-manager-default-site.png)
+
+> Figure 57. Default IIS website successfully loaded before Windows Authentication was configured.
+
+![Default IIS website successfully loaded before Windows Authentication was configured](../evidence/screenshots/iis-kerberos/iis-default-web-page.png)  
 
 ## Configure Windows Authentication
 
@@ -33,8 +37,9 @@ Configuration:
 
 This configuration requires users to authenticate using Windows credentials before accessing the website.
 
-> Figure XX. Windows Authentication enabled and Anonymous Authentication disabled.  
-> `../evidence/screenshots/iis-kerberos/iis-windows-authentication-enabled.png`  
+> Figure 58. Windows Authentication enabled and Anonymous Authentication disabled.
+
+![Windows Authentication enabled and Anonymous Authentication disabled](../evidence/screenshots/iis-kerberos/iis-windows-authentication-enabled.png)  
 
 ## Configure Authentication Providers
 
@@ -47,8 +52,9 @@ Provider order:
 
 Placing **Negotiate** first ensures IIS attempts Kerberos authentication before falling back to NTLM.
 
-> Figure XX. Windows Authentication providers configured.  
-> `../evidence/screenshots/iis-kerberos/iis-authentication-providers.png`  
+> Figure 59. Windows Authentication providers configured.
+
+![Windows Authentication providers configured](../evidence/screenshots/iis-kerberos/iis-authentication-providers.png)
 
 ## Create IIS Service Account
 
@@ -62,12 +68,13 @@ Configuration:
 | User Logon Name | http |
 | Password Never Expires | Enabled |
 
-> Figure XX. HTTP service account created.  
-> `../evidence/screenshots/iis-kerberos/http-service-user-created.png`  
+> Figure 60. HTTP service account created.
 
-> Figure XX. HTTP service account properties.  
-> `../evidence/screenshots/iis-kerberos/http-service-user-properties-1.png`    
-> `../evidence/screenshots/iis-kerberos/http-service-user-properties-2.png` 
+![HTTP service account created](../evidence/screenshots/iis-kerberos/http-service-user-created.png)  
+
+> Figure 61. HTTP service account properties.  
+![HTTP service account properties](../evidence/screenshots/iis-kerberos/http-service-user-properties-1.png)    
+![HTTP service account properties](../evidence/screenshots/iis-kerberos/http-service-user-properties-2.png)
 
 ## Register Service Principal Names (SPNs)
 
@@ -91,8 +98,8 @@ HTTP/WIN-HSDL1A303DJ
 HTTP/WIN-HSDL1A303DJ.parkhomenko.test
 ```
 
-> Figure XX. HTTP Service Principal Names successfully registered.  
-> `../evidence/screenshots/iis-kerberos/spn-registration-success.png`  
+> Figure 62. HTTP Service Principal Names successfully registered.  
+![HTTP Service Principal Names successfully registered](../evidence/screenshots/iis-kerberos/spn-registration-success.png)
 
 ## Configure IIS Application Pool
 
@@ -119,17 +126,21 @@ Set-WebConfigurationProperty `
 iisreset
 ```
 
-> Figure XX. Default Application Pool identity before configuration.  
-> `../evidence/screenshots/iis-kerberos/application-pool-default-identity.png`  
+> Figure 63. Default Application Pool identity before configuration.
 
-> Figure XX. Application Pool configured to use the HTTP service account.  
-> `../evidence/screenshots/iis-kerberos/application-pool-http-service-account.png`  
+![Default Application Pool identity before configuration](../evidence/screenshots/iis-kerberos/application-pool-default-identity.png)
 
-> Figure XX. Application Pool credentials enabled for Kerberos authentication.  
-> `../evidence/screenshots/iis-kerberos/useapppoolcredentials-enabled.png`  
+> Figure 64. Application Pool configured to use the HTTP service account.
 
-> Figure XX. IIS successfully restarted after configuration.  
-> `../evidence/screenshots/iis-kerberos/iisreset-success.png`  
+![Application Pool configured to use the HTTP service account](../evidence/screenshots/iis-kerberos/application-pool-http-service-account.png)
+
+> Figure 65. Application Pool credentials enabled for Kerberos authentication.
+
+![Application Pool credentials enabled for Kerberos authentication](../evidence/screenshots/iis-kerberos/useapppoolcredentials-enabled.png)
+
+> Figure 66. IIS successfully restarted after configuration.
+
+![IIS successfully restarted after configuration](../evidence/screenshots/iis-kerberos/iisreset-success.png)  
 
 ## Verify DNS Resolution
 
@@ -137,14 +148,17 @@ Before testing Kerberos authentication, DNS resolution was verified from the Win
 
 The client successfully resolved the Fully Qualified Domain Name (FQDN) of the IIS server.
 
-> Figure XX. DNS host record configured on the Domain Controller.  
-> `../evidence/screenshots/iis-kerberos/dns-manager-host-record.png`  
+> Figure 67. DNS host record configured on the Domain Controller.
 
-> Figure XX. Successful DNS name resolution using nslookup.  
-> `../evidence/screenshots/iis-kerberos/nslookup-hostname-success.png`  
+![DNS host record configured on the Domain Controller](../evidence/screenshots/iis-kerberos/dns-manager-host-record.png)
 
-> Figure XX. Windows 11 client IP configuration.  
-> `../evidence/screenshots/iis-kerberos/client-ipconfig-domain.png`  
+> Figure 68. Successful DNS name resolution using nslookup.
+
+![Successful DNS name resolution using nslookup](../evidence/screenshots/iis-kerberos/nslookup-hostname-success.png)
+
+> Figure 69. Windows 11 client IP configuration.
+
+![Windows 11 client IP configuration](../evidence/screenshots/iis-kerberos/client-ipconfig-domain.png)  
 
 ## Verify IIS Authentication
 
@@ -158,11 +172,13 @@ Windows Authentication prompted for domain credentials.
 
 After successful authentication, the IIS website loaded successfully.
 
-> Figure XX. Windows Authentication credential prompt.  
-> `../evidence/screenshots/iis-kerberos/iis-browser-authentication-prompt.png`  
+> Figure 70. Windows Authentication credential prompt.
 
-> Figure XX. IIS website successfully accessed after authentication.  
-> `../evidence/screenshots/iis-kerberos/iis-browser-authenticated.png`  
+![Windows Authentication credential prompt](../evidence/screenshots/iis-kerberos/iis-browser-authentication-prompt.png)
+
+> Figure 71. IIS website successfully accessed after authentication.
+
+![IIS website successfully accessed after authentication](../evidence/screenshots/iis-kerberos/iis-browser-authenticated.png)  
 
 ## Verify Kerberos Authentication Using Wireshark
 
@@ -197,11 +213,13 @@ klist purge
 
 Although `klist` did not display cached tickets in this lab environment after the purge, the successful authentication to the IIS website together with the captured **TGS-REQ** and **TGS-REP** packets confirms that Kerberos authentication was successfully performed.
 
-> Figure XX. Wireshark capture filtered using `kerberos`.  
-> `../evidence/screenshots/iis-kerberos/wireshark-kerberos-tgs.png`  
+> Figure 72. Wireshark capture filtered using `kerberos`.
 
-> Figure XX. Kerberos ticket cache cleared using `klist purge`.  
-> `../evidence/screenshots/iis-kerberos/klist-purge.png`  
+![Wireshark capture filtered using kerberos](../evidence/screenshots/iis-kerberos/wireshark-kerberos-tgs.png)
+
+> Figure 73. Kerberos ticket cache cleared using `klist purge`.
+
+![Kerberos ticket cache cleared using klist purge](../evidence/screenshots/iis-kerberos/klist-purge.png)
 
 # Result
 
